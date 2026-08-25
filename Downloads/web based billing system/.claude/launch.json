@@ -6,7 +6,7 @@
       "runtimeExecutable": "python",
       "runtimeArgs": ["-m", "http.server", "8470"],
       "port": 8470,
-      "url": "http://localhost:8470"
+      "url": "http://localhost:8470/app.html"
     }
   ]
 }

@@ -3,119 +3,206 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LedgerDesk — Billing System</title>
+<title>LedgerDesk — the counter that keeps its own books</title>
+<meta name="description" content="A complete GST billing counter for small shops — in a single browser tab. Invoices, stock, customers and reports. Nothing to install; your books stay in your browser.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,600&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/landing.css">
 </head>
 <body>
 
-<!-- ============ LOGIN ============ -->
-<div id="login-screen" class="login-screen hidden">
-  <div class="login-card">
-    <div class="login-brand">
-      <span class="brand-mark">₹</span>
-      <h1 class="login-title">LedgerDesk</h1>
-      <p class="login-sub">Sign in to open the counter</p>
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <a class="brand" href="./">
+    <span class="brand-mark">₹</span>
+    <span class="brand-name">LedgerDesk</span>
+  </a>
+  <nav class="topnav">
+    <a href="#inside">What's inside</a>
+    <a href="#day">A day at the counter</a>
+    <a href="#books">Your books</a>
+  </nav>
+  <a class="topbar-cta" href="app.html">Open the counter</a>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <p class="eyebrow">est. at the counter · gst-ready</p>
+      <h1>The counter that keeps <em>its own books.</em></h1>
+      <p class="sub">
+        LedgerDesk turns any browser into a billing counter — GST invoices,
+        stock, regulars and day-end reports. Nothing to install, nothing to
+        renew; the books live in your browser.
+      </p>
+      <div class="cta-row">
+        <a class="btn-hero" href="app.html">Open the counter</a>
+        <a class="link-quiet" href="#inside">See what's inside ↓</a>
+      </div>
+      <p class="hero-note">demo login · admin / admin123</p>
     </div>
-    <form id="login-form" autocomplete="off">
-      <label class="field">
-        <span class="field-label">Username</span>
-        <input type="text" id="login-user" placeholder="admin" required>
-      </label>
-      <label class="field">
-        <span class="field-label">Password</span>
-        <input type="password" id="login-pass" placeholder="••••••••" required>
-      </label>
-      <p id="login-error" class="login-error hidden">Wrong username or password.</p>
-      <button type="submit" class="btn btn-primary btn-block">Open counter</button>
-    </form>
-    <p class="login-hint">First run? Sign in with <b>admin</b> / <b>admin123</b></p>
+
+    <!-- signature: the bill that writes itself -->
+    <div class="hero-bill" aria-hidden="true">
+      <div class="copy-sheet copy-pink"></div>
+      <div class="copy-sheet copy-blue"></div>
+      <div class="bill-sheet">
+        <div class="bill-head">
+          <div>
+            <div class="bill-shop">Sundaram General Stores</div>
+            <div class="bill-addr">12, M.G. Road, Pune</div>
+          </div>
+          <div class="bill-doc">
+            <div class="bill-tax">TAX INVOICE</div>
+            <div class="bill-no">INV-0059</div>
+          </div>
+        </div>
+
+        <div class="bill-rows">
+          <div class="bill-row" style="--i:0"><span class="br-name">Basmati Rice 5kg</span><span class="br-qty">2 × 480.00</span><span class="br-amt">960.00</span></div>
+          <div class="bill-row" style="--i:1"><span class="br-name">LED Bulb 9W</span><span class="br-qty">1 × 120.00</span><span class="br-amt">120.00</span></div>
+          <div class="bill-row" style="--i:2"><span class="br-name">Notebook A4 200pg</span><span class="br-qty">3 × 85.00</span><span class="br-amt">255.00</span></div>
+          <div class="bill-row" style="--i:3"><span class="br-name">Tea Powder 500g</span><span class="br-qty">4 × 265.00</span><span class="br-amt">1,060.00</span></div>
+        </div>
+
+        <div class="bill-totals">
+          <div class="bt-row" style="--i:4"><span>taxable</span><b>2,395.00</b></div>
+          <div class="bt-row" style="--i:5"><span>cgst</span><b>73.00</b></div>
+          <div class="bt-row" style="--i:6"><span>sgst</span><b>73.00</b></div>
+          <div class="bt-row bt-grand" style="--i:7"><span>total</span><b>₹<span id="bill-total">0.00</span></b></div>
+        </div>
+
+        <div class="bill-words" style="--i:8">Two Thousand Five Hundred Forty One Rupees Only</div>
+        <div class="paid-stamp">PAID</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BILL TICKER ============ -->
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track">
+    <div class="ticker-set">
+      <span>INV-0059 · Sundaram General Stores · ₹2,541.00 · PAID</span>
+      <span>INV-0058 · Ramesh Iyer · UPI · ₹412.50</span>
+      <span>INV-0057 · walk-in · cash · change ₹58.50</span>
+      <span>INV-0056 · Vikram Traders · credit · 30 days</span>
+      <span>INV-0055 · Anita Deshmukh · card · ₹1,180.00</span>
+      <span>low stock · Wall Clock · 4 left</span>
+      <span>day closed · 23 bills · ₹41,206.75</span>
+    </div>
+    <div class="ticker-set">
+      <span>INV-0059 · Sundaram General Stores · ₹2,541.00 · PAID</span>
+      <span>INV-0058 · Ramesh Iyer · UPI · ₹412.50</span>
+      <span>INV-0057 · walk-in · cash · change ₹58.50</span>
+      <span>INV-0056 · Vikram Traders · credit · 30 days</span>
+      <span>INV-0055 · Anita Deshmukh · card · ₹1,180.00</span>
+      <span>low stock · Wall Clock · 4 left</span>
+      <span>day closed · 23 bills · ₹41,206.75</span>
+    </div>
   </div>
 </div>
 
-<!-- ============ APP SHELL ============ -->
-<div id="app" class="app hidden">
+<!-- ============ INDEX OF ACCOUNTS ============ -->
+<section class="index-section" id="inside">
+  <div class="wrap">
+    <p class="eyebrow dark reveal">what's inside</p>
+    <h2 class="reveal">Six folios. One shop.</h2>
 
-  <aside class="sidebar">
-    <div class="sidebar-brand">
-      <span class="brand-mark brand-mark-sm">₹</span>
-      <div>
-        <div id="sidebar-shop-name" class="sidebar-shop">My Shop</div>
-        <div class="sidebar-appname">LedgerDesk</div>
+    <ol class="ledger-index">
+      <li class="reveal" style="--i:0">
+        <span class="folio">F-01</span>
+        <span class="idx-name">Dashboard</span>
+        <span class="idx-desc">Today's takings, pending payments and slow stock — before you have to ask.</span>
+        <span class="idx-arrow">→</span>
+      </li>
+      <li class="reveal" style="--i:1">
+        <span class="folio">F-02</span>
+        <span class="idx-name">New Bill</span>
+        <span class="idx-desc">Search, tap, done. GST splits itself; change comes out exact to the paisa.</span>
+        <span class="idx-arrow">→</span>
+      </li>
+      <li class="reveal" style="--i:2">
+        <span class="folio">F-03</span>
+        <span class="idx-name">Invoices</span>
+        <span class="idx-desc">Every bill numbered and print-ready. Part-paid? Settle it when they return.</span>
+        <span class="idx-arrow">→</span>
+      </li>
+      <li class="reveal" style="--i:3">
+        <span class="folio">F-04</span>
+        <span class="idx-name">Items &amp; Stock</span>
+        <span class="idx-desc">Goods and services on one shelf, with a warning before the shelf runs empty.</span>
+        <span class="idx-arrow">→</span>
+      </li>
+      <li class="reveal" style="--i:4">
+        <span class="folio">F-05</span>
+        <span class="idx-name">Customers</span>
+        <span class="idx-desc">Regulars remembered — GSTIN, purchase history, what's still due.</span>
+        <span class="idx-arrow">→</span>
+      </li>
+      <li class="reveal" style="--i:5">
+        <span class="folio">F-06</span>
+        <span class="idx-name">Reports</span>
+        <span class="idx-desc">Ask any date range. Hand the accountant a clean CSV and keep the weekend.</span>
+        <span class="idx-arrow">→</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ============ A DAY AT THE COUNTER ============ -->
+<section class="day-section" id="day">
+  <div class="wrap">
+    <p class="eyebrow dark reveal">a day at the counter</p>
+    <h2 class="reveal">Three moves, then home.</h2>
+
+    <div class="steps">
+      <div class="step reveal" style="--i:0">
+        <span class="step-no">01</span>
+        <h3>Stock the shelf</h3>
+        <p>Add each item once — rate, GST slab, stock. Services skip the counting.</p>
+        <span class="step-tag">once</span>
+      </div>
+      <div class="step reveal" style="--i:1">
+        <span class="step-no">02</span>
+        <h3>Bill at the counter</h3>
+        <p>Search, tap, charge. Cash, UPI, card or credit — the maths is never yours.</p>
+        <span class="step-tag">~8 seconds a customer</span>
+      </div>
+      <div class="step reveal" style="--i:2">
+        <span class="step-no">03</span>
+        <h3>Close the day</h3>
+        <p>Takings, GST and best-sellers for any range. One file backs up the whole shop.</p>
+        <span class="step-tag">30 seconds</span>
       </div>
     </div>
+  </div>
+</section>
 
-    <nav class="nav">
-      <a href="#/dashboard" class="nav-item" data-route="dashboard">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="7" height="9" rx="1.5"/><rect x="14" y="3" width="7" height="5" rx="1.5"/><rect x="14" y="12" width="7" height="9" rx="1.5"/><rect x="3" y="16" width="7" height="5" rx="1.5"/></svg>
-        Dashboard
-      </a>
-      <a href="#/billing" class="nav-item" data-route="billing">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2V2z"/><path d="M9 7h6M9 11h6M9 15h4"/></svg>
-        New Bill
-      </a>
-      <a href="#/invoices" class="nav-item" data-route="invoices">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 3h16v18l-2.5-1.5L15 21l-2.5-1.5L10 21l-2.5-1.5L5 21l-1-.6V3z"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
-        Invoices
-        <span id="nav-invoice-count" class="nav-badge"></span>
-      </a>
-      <a href="#/products" class="nav-item" data-route="products">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="m12 2 8 4.5v11L12 22l-8-4.5v-11L12 2z"/><path d="M12 11 4 6.5M12 11l8-4.5M12 11v10.5"/></svg>
-        Items
-      </a>
-      <a href="#/customers" class="nav-item" data-route="customers">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.5 3.4-5.5 6.5-5.5s5.7 2 6.5 5.5"/><circle cx="17.5" cy="9.5" r="2.5"/><path d="M17 14.6c2.4.3 4 1.9 4.5 4.4"/></svg>
-        Customers
-      </a>
-      <a href="#/reports" class="nav-item" data-route="reports">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 21h18"/><rect x="5" y="12" width="3" height="7" rx="1"/><rect x="10.5" y="8" width="3" height="11" rx="1"/><rect x="16" y="4" width="3" height="15" rx="1"/></svg>
-        Reports
-      </a>
-      <a href="#/settings" class="nav-item" data-route="settings">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.7 1.7 0 0 0-1.87-.34 1.7 1.7 0 0 0-1 1.55V21a2 2 0 1 1-4 0v-.09a1.7 1.7 0 0 0-1-1.55 1.7 1.7 0 0 0-1.87.34l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.7 1.7 0 0 0 .34-1.87 1.7 1.7 0 0 0-1.55-1H3a2 2 0 1 1 0-4h.09a1.7 1.7 0 0 0 1.55-1 1.7 1.7 0 0 0-.34-1.87l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.7 1.7 0 0 0 1.87.34h0a1.7 1.7 0 0 0 1-1.55V3a2 2 0 1 1 4 0v.09a1.7 1.7 0 0 0 1 1.55h0a1.7 1.7 0 0 0 1.87-.34l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.7 1.7 0 0 0-.34 1.87v0a1.7 1.7 0 0 0 1.55 1H21a2 2 0 1 1 0 4h-.09a1.7 1.7 0 0 0-1.55 1z"/></svg>
-        Settings
-      </a>
-    </nav>
+<!-- ============ YOUR BOOKS ============ -->
+<section class="local-section" id="books">
+  <div class="wrap">
+    <p class="local-claim reveal">0 servers · 0 sign-ups · 0 uploads</p>
+    <h2 class="reveal">Your books never leave this browser.</h2>
+    <p class="local-sub reveal">
+      Every invoice, item and customer stays in your own browser's storage.
+      No account, no monthly fee, no server to trust. Moving shops?
+      One backup file carries everything to the next computer.
+    </p>
+    <a class="btn-hero reveal" href="app.html">Open the counter</a>
+  </div>
+</section>
 
-    <div class="sidebar-footer">
-      <div class="user-chip">
-        <div id="user-avatar" class="avatar">A</div>
-        <div>
-          <div id="user-name" class="user-name">Administrator</div>
-          <button id="logout-btn" class="linklike">Log out</button>
-        </div>
-      </div>
-    </div>
-  </aside>
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <p class="foot-line">LedgerDesk — a billing counter in a browser tab.</p>
+    <p class="foot-hint">demo login · admin / admin123</p>
+  </div>
+</footer>
 
-  <main class="main">
-    <header class="topbar">
-      <button id="menu-toggle" class="icon-btn menu-toggle" aria-label="Toggle menu">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
-      </button>
-      <h2 id="page-title" class="page-title">Dashboard</h2>
-      <div id="page-actions" class="page-actions"></div>
-    </header>
-    <div id="page" class="page"></div>
-  </main>
-</div>
-
-<!-- ============ OVERLAYS ============ -->
-<div id="modal-root"></div>
-<div id="toast-root" class="toast-root"></div>
-<div id="print-area" class="print-area"></div>
-
-<script src="js/utils.js" defer></script>
-<script src="js/db.js" defer></script>
-<script src="js/dashboard.js" defer></script>
-<script src="js/products.js" defer></script>
-<script src="js/customers.js" defer></script>
-<script src="js/billing.js" defer></script>
-<script src="js/invoices.js" defer></script>
-<script src="js/reports.js" defer></script>
-<script src="js/settings.js" defer></script>
-<script src="js/app.js" defer></script>
+<script src="js/landing.js" defer></script>
 </body>
 </html>
