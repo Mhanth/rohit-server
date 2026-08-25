@@ -6,7 +6,7 @@ A complete billing / POS system for shops and service businesses, built with **p
 
 **Option 1 — just open it**
 
-Double-click `index.html`. That's it.
+Double-click `index.html` — that's the public landing page. Click **Open the counter** to enter the billing system (`app.html`).
 
 **Option 2 — run a tiny local server** (nicer URLs)
 
@@ -14,7 +14,7 @@ Double-click `index.html`. That's it.
 python -m http.server 8470
 ```
 
-Then open <http://localhost:8470>.
+Then open <http://localhost:8470> (landing) or <http://localhost:8470/app.html> (the system itself).
 
 **Default login:** username `admin`, password `admin123`
 (change it in **Settings → Password & reset**)
@@ -45,9 +45,14 @@ Everything lives in the browser under the key `ledgerdesk_db_v1`. Use **Settings
 ## Project structure
 
 ```
-├── index.html          app shell + login
-├── css/style.css       full design system (ledger-green theme, print styles)
+├── index.html          public landing page (self-writing invoice hero)
+├── app.html            app shell + login
+├── css/
+│   ├── style.css       app design system (ledger-green theme, print styles)
+│   └── landing.css     landing page styles
 └── js/
+    ├── landing.js      hero count-up + scroll reveals
+    ├── utils.js        helpers: money/date formatting, modals, toasts, CSV, number-to-words
     ├── utils.js        helpers: money/date formatting, modals, toasts, CSV, number-to-words
     ├── db.js           localStorage layer, GST totals engine, seed demo data
     ├── dashboard.js    overview page

@@ -1,0 +1,334 @@
+/* ============================================================
+   LedgerDesk landing — "the counter that keeps its own books"
+   Deep-green hero, self-writing invoice hero bill, marigold
+   ticker, ledger index. Fraunces / Public Sans / IBM Plex Mono.
+   ============================================================ */
+
+:root {
+  --counter: #071E17;
+  --ledger: #0F3D2E;
+  --ledger-3: #17573F;
+  --paper: #F2F3EE;
+  --sheet: #FDFCF8;
+  --ink: #17251E;
+  --muted: #5F6E64;
+  --line: #DFE3DA;
+  --marigold: #E9A13B;
+  --marigold-deep: #C9821B;
+  --stamp: #BC4B32;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Public Sans", "Segoe UI", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", Consolas, monospace;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+::selection { background: rgba(233,161,59,.4); }
+a { color: inherit; }
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.08; letter-spacing: -.015em; }
+
+.eyebrow {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  letter-spacing: .22em; text-transform: uppercase;
+  color: var(--marigold); margin-bottom: 14px;
+}
+.eyebrow.dark { color: var(--marigold-deep); }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
+
+/* ---------- reveal-on-scroll ---------- */
+.reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s cubic-bezier(.2,.8,.25,1); transition-delay: calc(var(--i, 0) * 70ms); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ============================================================
+   TOP BAR
+   ============================================================ */
+.topbar {
+  position: sticky; top: 0; z-index: 50;
+  display: flex; align-items: center; gap: 26px;
+  padding: 13px 28px;
+  background: rgba(7,30,23,.88); backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(233,161,59,.18);
+}
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand-mark {
+  display: grid; place-items: center; width: 34px; height: 34px;
+  border-radius: 9px; background: var(--marigold); color: var(--counter);
+  font-family: var(--font-display); font-weight: 700; font-size: 18px;
+}
+.brand-name { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: #F4EFE2; }
+.topnav { margin-left: auto; display: flex; gap: 22px; }
+.topnav a {
+  font-size: 13.5px; font-weight: 500; color: #B9CCC0;
+  text-decoration: none; letter-spacing: .02em;
+}
+.topnav a:hover { color: #fff; }
+.topbar-cta {
+  font-family: var(--font-mono); font-size: 12.5px; font-weight: 600;
+  letter-spacing: .06em; text-transform: uppercase;
+  color: var(--counter); background: var(--marigold);
+  padding: 8px 14px; border-radius: 8px; text-decoration: none;
+  transition: transform .12s ease, background .15s;
+}
+.topbar-cta:hover { background: #F2AE4E; transform: translateY(-1px); }
+.topbar-cta:focus-visible, .btn-hero:focus-visible, .link-quiet:focus-visible { outline: 2px solid var(--marigold); outline-offset: 3px; }
+
+/* ============================================================
+   HERO — deep green, ruled paper, the self-writing bill
+   ============================================================ */
+.hero {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 35px, rgba(233,161,59,.055) 35px 36px),
+    radial-gradient(1100px 640px at 78% -12%, #17573F 0%, #0F3D2E 46%, #071E17 100%);
+  color: #EAF0E9;
+  overflow: hidden;
+}
+.hero-inner {
+  max-width: 1120px; margin: 0 auto;
+  padding: 84px 28px 96px;
+  display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center;
+}
+.hero h1 { font-size: clamp(38px, 4.6vw, 58px); color: #F7F3E6; }
+.hero h1 em { font-style: italic; color: var(--marigold); }
+.hero .sub { margin-top: 20px; font-size: 17px; color: #C2D2C5; max-width: 46ch; }
+.cta-row { display: flex; align-items: center; gap: 22px; margin-top: 30px; flex-wrap: wrap; }
+
+.btn-hero {
+  display: inline-block; font-family: var(--font-mono); font-weight: 600;
+  font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--counter); background: var(--marigold);
+  padding: 15px 26px; border-radius: 10px; text-decoration: none;
+  box-shadow: 0 10px 28px -10px rgba(233,161,59,.55);
+  transition: transform .12s ease, background .15s, box-shadow .2s;
+}
+.btn-hero:hover { background: #F2AE4E; transform: translateY(-2px); box-shadow: 0 16px 34px -12px rgba(233,161,59,.65); }
+.link-quiet { font-size: 14px; font-weight: 600; color: #9FB8A8; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(159,184,168,.4); }
+.link-quiet:hover { color: #fff; }
+.hero-note { font-family: var(--font-mono); font-size: 12px; color: #7E9A8B; margin-top: 26px; letter-spacing: .04em; }
+
+/* ---------- the bill that writes itself ---------- */
+.hero-bill { position: relative; }
+.copy-sheet {
+  position: absolute; inset: 0; border-radius: 6px;
+  box-shadow: 0 18px 40px -18px rgba(0,0,0,.5);
+}
+.copy-pink { background: #F3DDD5; transform: rotate(4deg) translate(16px, 10px); }
+.copy-blue { background: #DCE7F0; transform: rotate(-1deg) translate(-10px, 4px); }
+
+.bill-sheet {
+  position: relative;
+  background: var(--sheet);
+  color: var(--ink);
+  border-radius: 6px;
+  padding: 26px 28px 30px 44px;
+  box-shadow: 0 30px 60px -22px rgba(0,0,0,.55);
+  transform: rotate(-2.2deg);
+}
+.bill-sheet::before {
+  content: ""; position: absolute; left: 26px; top: 0; bottom: 0; width: 2px;
+  background: var(--stamp); opacity: .45;
+}
+.bill-head { display: flex; justify-content: space-between; gap: 14px; border-bottom: 2px solid var(--ink); padding-bottom: 14px; }
+.bill-shop { font-family: var(--font-display); font-weight: 700; font-size: 17px; }
+.bill-addr { font-size: 11.5px; color: var(--muted); margin-top: 1px; }
+.bill-doc { text-align: right; }
+.bill-tax { font-family: var(--font-display); font-size: 13px; letter-spacing: .12em; }
+.bill-no { font-family: var(--font-mono); font-size: 11.5px; color: var(--stamp); font-weight: 600; margin-top: 3px; }
+
+.bill-rows { padding: 12px 0 4px; }
+.bill-row {
+  display: grid; grid-template-columns: 1fr auto auto; gap: 18px;
+  font-family: var(--font-mono); font-size: 12.5px;
+  padding: 7px 0; border-bottom: 1px dashed var(--line);
+  opacity: 0; transform: translateX(-10px);
+  animation: writeLine .45s cubic-bezier(.2,.8,.25,1) forwards;
+  animation-delay: calc(.55s + var(--i) * .38s);
+}
+@keyframes writeLine { to { opacity: 1; transform: none; } }
+.br-name { font-family: var(--font-body); font-weight: 600; font-size: 13px; }
+.br-qty, .br-amt { color: var(--muted); }
+.br-amt { font-weight: 600; color: var(--ink); }
+
+.bill-totals { padding-top: 10px; }
+.bt-row {
+  display: flex; justify-content: space-between;
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  padding: 3px 0;
+  opacity: 0; transform: translateX(-10px);
+  animation: writeLine .45s cubic-bezier(.2,.8,.25,1) forwards;
+  animation-delay: calc(.55s + var(--i) * .38s);
+}
+.bt-grand { border-top: 2px solid var(--ink); margin-top: 8px; padding-top: 9px; color: var(--ink); align-items: baseline; }
+.bt-grand span { text-transform: uppercase; letter-spacing: .14em; font-size: 10.5px; }
+.bt-grand b { font-size: 21px; }
+
+.bill-words {
+  font-style: italic; font-size: 11px; color: var(--muted); margin-top: 10px;
+  opacity: 0;
+  animation: writeLine .45s ease forwards;
+  animation-delay: calc(.55s + 8 * .38s);
+}
+
+.paid-stamp {
+  position: absolute; right: 26px; bottom: 58px;
+  border: 3px double var(--stamp); color: var(--stamp);
+  font-family: var(--font-display); font-size: 26px; font-weight: 700;
+  letter-spacing: .18em; padding: 3px 14px; border-radius: 6px;
+  transform: rotate(-12deg); opacity: 0;
+  animation: stampIn .4s cubic-bezier(.2,.8,.25,1) forwards;
+  animation-delay: 3.6s;
+}
+@keyframes stampIn {
+  0% { transform: scale(2.1) rotate(-14deg); opacity: 0; }
+  55% { transform: scale(.92) rotate(-12deg); opacity: .85; }
+  70% { transform: scale(1.06) rotate(-12deg); opacity: .85; }
+  100% { transform: scale(1) rotate(-12deg); opacity: .85; }
+}
+
+/* ============================================================
+   BILL TICKER — the day's takings, scrolling past
+   ============================================================ */
+.ticker {
+  background: var(--marigold);
+  border-block: 2px solid var(--counter);
+  overflow: hidden;
+}
+.ticker-track { display: flex; width: max-content; animation: tickerMove 36s linear infinite; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker-set { display: flex; flex-shrink: 0; }
+.ticker-set span {
+  font-family: var(--font-mono); font-size: 12.5px; font-weight: 500;
+  color: var(--counter); padding: 10px 26px;
+  white-space: nowrap; letter-spacing: .02em;
+  border-right: 1px solid rgba(7,30,23,.25);
+}
+@keyframes tickerMove { to { transform: translateX(-50%); } }
+
+/* ============================================================
+   INDEX OF ACCOUNTS — modules as ledger folios
+   ============================================================ */
+.index-section {
+  padding: 92px 0 70px;
+  position: relative;
+}
+.index-section::before {
+  content: ""; position: absolute; left: max(18px, calc((100vw - 1120px) / 2 - 40px)); top: 70px; bottom: 40px;
+  width: 2px; background: var(--stamp); opacity: .35;
+}
+.index-section h2, .day-section h2 { font-size: clamp(28px, 3.4vw, 40px); margin-bottom: 40px; }
+
+.ledger-index { list-style: none; }
+.ledger-index li {
+  display: grid; grid-template-columns: 64px 220px 1fr 40px;
+  gap: 22px; align-items: baseline;
+  padding: 20px 10px;
+  border-bottom: 1px dashed #C9CFC2;
+  border-radius: 4px;
+  transition: background .15s ease, transform .15s ease;
+}
+.ledger-index li:hover { background: rgba(233,161,59,.1); transform: translateX(4px); }
+.folio {
+  font-family: var(--font-mono); font-size: 12px; font-weight: 600;
+  color: var(--muted); letter-spacing: .1em;
+  transition: color .15s;
+}
+.ledger-index li:hover .folio { color: var(--stamp); }
+.idx-name { font-family: var(--font-display); font-weight: 600; font-size: 22px; }
+.idx-desc { font-size: 14.5px; color: var(--muted); }
+.idx-arrow { font-family: var(--font-mono); color: var(--muted); text-align: right; transition: transform .15s, color .15s; }
+.ledger-index li:hover .idx-arrow { transform: translateX(4px); color: var(--marigold-deep); }
+
+/* ============================================================
+   A DAY AT THE COUNTER
+   ============================================================ */
+.day-section { padding: 40px 0 90px; }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.step {
+  background: var(--sheet); border: 1px solid var(--line); border-radius: 12px;
+  padding: 24px 22px 20px; position: relative;
+  box-shadow: 0 8px 22px -14px rgba(23,37,30,.25);
+}
+.step-no {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 600;
+  color: var(--stamp); letter-spacing: .12em;
+}
+.step h3 { font-size: 21px; margin: 10px 0 8px; }
+.step p { font-size: 14px; color: var(--muted); }
+.step-tag {
+  display: inline-block; margin-top: 16px;
+  font-family: var(--font-mono); font-size: 10.5px; font-weight: 600;
+  letter-spacing: .12em; text-transform: uppercase;
+  color: var(--marigold-deep);
+  border: 1.5px solid rgba(201,130,27,.45); border-radius: 20px;
+  padding: 3px 10px;
+}
+
+/* ============================================================
+   YOUR BOOKS — local-first honesty
+   ============================================================ */
+.local-section {
+  background:
+    repeating-linear-gradient(0deg, transparent 0 35px, rgba(233,161,59,.05) 35px 36px),
+    radial-gradient(900px 520px at 50% -20%, #17573F 0%, #0F3D2E 52%, #071E17 100%);
+  color: #EAF0E9;
+  text-align: center;
+  padding: 96px 0;
+}
+.local-claim {
+  font-family: var(--font-mono); font-size: clamp(13px, 1.6vw, 16px);
+  font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
+  color: var(--marigold); margin-bottom: 18px;
+}
+.local-section h2 { font-size: clamp(28px, 3.6vw, 44px); color: #F7F3E6; max-width: 18ch; margin: 0 auto 18px; }
+.local-sub { max-width: 56ch; margin: 0 auto 34px; color: #B9CCC0; font-size: 15.5px; }
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.foot { padding: 26px 0 30px; }
+.foot .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; }
+.foot-line { font-size: 13.5px; color: var(--muted); }
+.foot-hint { font-family: var(--font-mono); font-size: 12px; color: var(--muted); letter-spacing: .04em; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 940px) {
+  .hero-inner { grid-template-columns: 1fr; padding: 64px 28px 80px; gap: 60px; }
+  .hero-bill { max-width: 470px; }
+  .steps { grid-template-columns: 1fr; }
+  .ledger-index li { grid-template-columns: 48px 1fr 32px; }
+  .idx-desc { grid-column: 2 / -1; grid-row: 2; margin-top: 2px; }
+  .topnav { display: none; }
+}
+@media (max-width: 560px) {
+  .wrap { padding: 0 18px; }
+  .hero-inner { padding: 52px 18px 64px; }
+  .bill-sheet { padding: 20px 18px 24px 36px; }
+  .bill-sheet::before { left: 20px; }
+  .topbar { padding: 12px 18px; }
+  .topbar-cta { padding: 7px 10px; }
+  .ledger-index li { gap: 12px; padding: 16px 6px; }
+  .idx-name { font-size: 18px; }
+  .index-section::before { display: none; }
+}
+
+/* ---------- reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .ticker-track { animation: none; }
+  .bill-row, .bt-row, .bill-words { animation: none; opacity: 1; transform: none; }
+  .paid-stamp { animation: none; opacity: .85; }
+}
