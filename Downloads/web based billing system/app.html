@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LedgerDesk — Billing System</title>
+<title>BillBook — Billing System</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,8 +15,18 @@
 <div id="login-screen" class="login-screen hidden">
   <div class="login-card">
     <div class="login-brand">
-      <span class="brand-mark">₹</span>
-      <h1 class="login-title">LedgerDesk</h1>
+      <span class="brand-mark">
+        <svg viewBox="0 0 48 48" width="30" height="30" aria-hidden="true">
+          <rect x="8" y="4" width="32" height="40" rx="7" fill="#1B2A52"/>
+          <rect x="12.5" y="10" width="3" height="6" rx="1.5" fill="#F0F3FE" opacity=".85"/>
+          <rect x="12.5" y="32" width="3" height="6" rx="1.5" fill="#F0F3FE" opacity=".85"/>
+          <rect x="20" y="11" width="14" height="26" rx="2" fill="#FDFCF8"/>
+          <text x="27" y="24.5" font-family="Sora, sans-serif" font-size="10.5" font-weight="700" fill="#3B4FE4" text-anchor="middle">₹</text>
+          <rect x="22.5" y="27.5" width="9" height="1.8" rx=".9" fill="#C9D1EA"/>
+          <rect x="22.5" y="31" width="6.5" height="1.8" rx=".9" fill="#C9D1EA"/>
+        </svg>
+      </span>
+      <h1 class="login-title">BillBook</h1>
       <p class="login-sub">Sign in to open the counter</p>
     </div>
     <form id="login-form" autocomplete="off">
@@ -40,10 +50,18 @@
 
   <aside class="sidebar">
     <div class="sidebar-brand">
-      <span class="brand-mark brand-mark-sm">₹</span>
+      <span class="brand-mark brand-mark-sm">
+        <svg viewBox="0 0 48 48" width="22" height="22" aria-hidden="true">
+          <rect x="8" y="4" width="32" height="40" rx="7" fill="#F0F3FE"/>
+          <rect x="20" y="11" width="14" height="26" rx="2" fill="#FDFCF8"/>
+          <text x="27" y="24.5" font-family="Sora, sans-serif" font-size="10.5" font-weight="700" fill="#3B4FE4" text-anchor="middle">₹</text>
+          <rect x="22.5" y="27.5" width="9" height="1.8" rx=".9" fill="#C9D1EA"/>
+          <rect x="22.5" y="31" width="6.5" height="1.8" rx=".9" fill="#C9D1EA"/>
+        </svg>
+      </span>
       <div>
         <div id="sidebar-shop-name" class="sidebar-shop">My Shop</div>
-        <div class="sidebar-appname">LedgerDesk</div>
+        <div class="sidebar-appname">BillBook</div>
       </div>
     </div>
 

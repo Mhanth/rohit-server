@@ -52,7 +52,7 @@ function applyShopIdentity() {
   const s = DB.getSettings();
   const session = getSession();
   $("#sidebar-shop-name").textContent = s.shopName;
-  document.title = `${s.shopName} · LedgerDesk`;
+  document.title = `${s.shopName} · BillBook`;
   if (session) {
     $("#user-name").textContent = session.name || session.username;
     $("#user-avatar").textContent = (session.name || session.username || "A").charAt(0).toUpperCase();

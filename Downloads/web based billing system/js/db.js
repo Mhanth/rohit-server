@@ -230,7 +230,7 @@ const DB = (() => {
 
   function importJSON(text) {
     const parsed = JSON.parse(text);
-    if (!parsed.settings || !Array.isArray(parsed.products)) throw new Error("Not a LedgerDesk backup file");
+    if (!parsed.settings || !Array.isArray(parsed.products)) throw new Error("Not a BillBook backup file");
     state = parsed;
     save();
   }
