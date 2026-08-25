@@ -134,7 +134,7 @@ function statusBadge(status) {
   return `<span class="badge ${cls}">${esc(status)}</span>`;
 }
 
-const DONUT_COLORS = ["#0F3D2E", "#E9A13B", "#17573F", "#BC4B32", "#5F8D76", "#C9821B", "#14655B", "#8B5E34"];
+const DONUT_COLORS = ["#3B4FE4", "#FFC94D", "#8A97F2", "#D9574A", "#63C99A", "#9A7BF0", "#4CB8D9", "#F0A58A"];
 
 function renderDonut(container, totalsMap) {
   const entries = Object.entries(totalsMap).sort((a, b) => b[1] - a[1]);

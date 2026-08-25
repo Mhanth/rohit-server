@@ -1,23 +1,24 @@
 /* ============================================================
-   LedgerDesk landing — "the counter that keeps its own books"
-   Deep-green hero, self-writing invoice hero bill, marigold
-   ticker, ledger index. Fraunces / Public Sans / IBM Plex Mono.
+   BillBook landing — "bill smart. grow fast."
+   Pastel light theme, logo navy + royal blue, self-writing
+   invoice hero, bill ticker, ledger index.
+   Sora / Public Sans / IBM Plex Mono.
    ============================================================ */
 
 :root {
-  --counter: #071E17;
-  --ledger: #0F3D2E;
-  --ledger-3: #17573F;
-  --paper: #F2F3EE;
+  --counter: #141F3E;       /* deep navy — dark sections, text on sun */
+  --royal: #3B4FE4;         /* logo royal blue */
+  --royal-2: #2E3CC4;
+  --paper: #F6F7FD;         /* pastel blue-tinted background */
   --sheet: #FDFCF8;
-  --ink: #17251E;
-  --muted: #5F6E64;
-  --line: #DFE3DA;
-  --marigold: #E9A13B;
-  --marigold-deep: #C9821B;
-  --stamp: #BC4B32;
+  --ink: #1B2A52;
+  --muted: #67719B;
+  --line: #E3E7F4;
+  --sun: #FFC94D;
+  --sun-deep: #B27B14;
+  --stamp: #D9574A;
 
-  --font-display: "Fraunces", Georgia, serif;
+  --font-display: "Sora", "Segoe UI", system-ui, sans-serif;
   --font-body: "Public Sans", "Segoe UI", system-ui, sans-serif;
   --font-mono: "IBM Plex Mono", Consolas, monospace;
 }
@@ -34,16 +35,16 @@ body {
   line-height: 1.55;
 }
 
-::selection { background: rgba(233,161,59,.4); }
+::selection { background: rgba(59,79,228,.22); }
 a { color: inherit; }
 h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.08; letter-spacing: -.015em; }
 
 .eyebrow {
   font-family: var(--font-mono); font-size: 12px; font-weight: 600;
   letter-spacing: .22em; text-transform: uppercase;
-  color: var(--marigold); margin-bottom: 14px;
+  color: var(--royal); margin-bottom: 14px;
 }
-.eyebrow.dark { color: var(--marigold-deep); }
+.eyebrow.dark { color: var(--sun-deep); }
 
 .wrap { max-width: 1120px; margin: 0 auto; padding: 0 28px; }
 
@@ -58,40 +59,36 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
   position: sticky; top: 0; z-index: 50;
   display: flex; align-items: center; gap: 26px;
   padding: 13px 28px;
-  background: rgba(7,30,23,.88); backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(233,161,59,.18);
+  background: rgba(246,247,253,.9); backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line);
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
-.brand-mark {
-  display: grid; place-items: center; width: 34px; height: 34px;
-  border-radius: 9px; background: var(--marigold); color: var(--counter);
-  font-family: var(--font-display); font-weight: 700; font-size: 18px;
-}
-.brand-name { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: #F4EFE2; }
+.brand-mark { display: grid; place-items: center; }
+.brand-name { font-family: var(--font-display); font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -.01em; }
 .topnav { margin-left: auto; display: flex; gap: 22px; }
 .topnav a {
-  font-size: 13.5px; font-weight: 500; color: #B9CCC0;
+  font-size: 13.5px; font-weight: 500; color: var(--muted);
   text-decoration: none; letter-spacing: .02em;
 }
-.topnav a:hover { color: #fff; }
+.topnav a:hover { color: var(--ink); }
 .topbar-cta {
   font-family: var(--font-mono); font-size: 12.5px; font-weight: 600;
   letter-spacing: .06em; text-transform: uppercase;
-  color: var(--counter); background: var(--marigold);
+  color: #fff; background: var(--royal);
   padding: 8px 14px; border-radius: 8px; text-decoration: none;
   transition: transform .12s ease, background .15s;
 }
-.topbar-cta:hover { background: #F2AE4E; transform: translateY(-1px); }
-.topbar-cta:focus-visible, .btn-hero:focus-visible, .link-quiet:focus-visible { outline: 2px solid var(--marigold); outline-offset: 3px; }
+.topbar-cta:hover { background: var(--royal-2); transform: translateY(-1px); }
+.topbar-cta:focus-visible, .btn-hero:focus-visible, .link-quiet:focus-visible { outline: 2px solid var(--royal); outline-offset: 3px; }
 
 /* ============================================================
    HERO — deep green, ruled paper, the self-writing bill
    ============================================================ */
 .hero {
   background:
-    repeating-linear-gradient(0deg, transparent 0 35px, rgba(233,161,59,.055) 35px 36px),
-    radial-gradient(1100px 640px at 78% -12%, #17573F 0%, #0F3D2E 46%, #071E17 100%);
-  color: #EAF0E9;
+    repeating-linear-gradient(0deg, transparent 0 35px, rgba(59,79,228,.05) 35px 36px),
+    radial-gradient(1100px 640px at 78% -12%, #EAF0FC 0%, #DCE4FA 46%, #CFDAF8 100%);
+  color: var(--ink);
   overflow: hidden;
 }
 .hero-inner {
@@ -99,23 +96,23 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
   padding: 84px 28px 96px;
   display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center;
 }
-.hero h1 { font-size: clamp(38px, 4.6vw, 58px); color: #F7F3E6; }
-.hero h1 em { font-style: italic; color: var(--marigold); }
-.hero .sub { margin-top: 20px; font-size: 17px; color: #C2D2C5; max-width: 46ch; }
+.hero h1 { font-size: clamp(38px, 4.6vw, 58px); color: var(--ink); }
+.hero h1 em { font-style: italic; color: var(--royal); }
+.hero .sub { margin-top: 20px; font-size: 17px; color: #5A6690; max-width: 46ch; }
 .cta-row { display: flex; align-items: center; gap: 22px; margin-top: 30px; flex-wrap: wrap; }
 
 .btn-hero {
   display: inline-block; font-family: var(--font-mono); font-weight: 600;
   font-size: 14px; letter-spacing: .08em; text-transform: uppercase;
-  color: var(--counter); background: var(--marigold);
+  color: #fff; background: var(--royal);
   padding: 15px 26px; border-radius: 10px; text-decoration: none;
-  box-shadow: 0 10px 28px -10px rgba(233,161,59,.55);
+  box-shadow: 0 10px 28px -10px rgba(59,79,228,.5);
   transition: transform .12s ease, background .15s, box-shadow .2s;
 }
-.btn-hero:hover { background: #F2AE4E; transform: translateY(-2px); box-shadow: 0 16px 34px -12px rgba(233,161,59,.65); }
-.link-quiet { font-size: 14px; font-weight: 600; color: #9FB8A8; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(159,184,168,.4); }
-.link-quiet:hover { color: #fff; }
-.hero-note { font-family: var(--font-mono); font-size: 12px; color: #7E9A8B; margin-top: 26px; letter-spacing: .04em; }
+.btn-hero:hover { background: var(--royal-2); transform: translateY(-2px); box-shadow: 0 16px 34px -12px rgba(59,79,228,.6); }
+.link-quiet { font-size: 14px; font-weight: 600; color: var(--muted); text-decoration: underline; text-underline-offset: 4px; text-decoration-color: rgba(103,113,155,.4); }
+.link-quiet:hover { color: var(--ink); }
+.hero-note { font-family: var(--font-mono); font-size: 12px; color: #8A94BC; margin-top: 26px; letter-spacing: .04em; }
 
 /* ---------- the bill that writes itself ---------- */
 .hero-bill { position: relative; }
@@ -200,7 +197,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
    BILL TICKER — the day's takings, scrolling past
    ============================================================ */
 .ticker {
-  background: var(--marigold);
+  background: var(--royal);
   border-block: 2px solid var(--counter);
   overflow: hidden;
 }
@@ -209,9 +206,9 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 .ticker-set { display: flex; flex-shrink: 0; }
 .ticker-set span {
   font-family: var(--font-mono); font-size: 12.5px; font-weight: 500;
-  color: var(--counter); padding: 10px 26px;
+  color: #fff; padding: 10px 26px;
   white-space: nowrap; letter-spacing: .02em;
-  border-right: 1px solid rgba(7,30,23,.25);
+  border-right: 1px solid rgba(255,255,255,.28);
 }
 @keyframes tickerMove { to { transform: translateX(-50%); } }
 
@@ -237,7 +234,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
   border-radius: 4px;
   transition: background .15s ease, transform .15s ease;
 }
-.ledger-index li:hover { background: rgba(233,161,59,.1); transform: translateX(4px); }
+.ledger-index li:hover { background: rgba(59,79,228,.07); transform: translateX(4px); }
 .folio {
   font-family: var(--font-mono); font-size: 12px; font-weight: 600;
   color: var(--muted); letter-spacing: .1em;
@@ -247,7 +244,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 .idx-name { font-family: var(--font-display); font-weight: 600; font-size: 22px; }
 .idx-desc { font-size: 14.5px; color: var(--muted); }
 .idx-arrow { font-family: var(--font-mono); color: var(--muted); text-align: right; transition: transform .15s, color .15s; }
-.ledger-index li:hover .idx-arrow { transform: translateX(4px); color: var(--marigold-deep); }
+.ledger-index li:hover .idx-arrow { transform: translateX(4px); color: var(--royal); }
 
 /* ============================================================
    A DAY AT THE COUNTER
@@ -257,7 +254,7 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
 .step {
   background: var(--sheet); border: 1px solid var(--line); border-radius: 12px;
   padding: 24px 22px 20px; position: relative;
-  box-shadow: 0 8px 22px -14px rgba(23,37,30,.25);
+  box-shadow: 0 8px 22px -14px rgba(27,42,82,.28);
 }
 .step-no {
   font-family: var(--font-mono); font-size: 13px; font-weight: 600;
@@ -269,8 +266,8 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
   display: inline-block; margin-top: 16px;
   font-family: var(--font-mono); font-size: 10.5px; font-weight: 600;
   letter-spacing: .12em; text-transform: uppercase;
-  color: var(--marigold-deep);
-  border: 1.5px solid rgba(201,130,27,.45); border-radius: 20px;
+  color: var(--sun-deep);
+  border: 1.5px solid rgba(178,123,20,.45); border-radius: 20px;
   padding: 3px 10px;
 }
 
@@ -279,19 +276,21 @@ h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.
    ============================================================ */
 .local-section {
   background:
-    repeating-linear-gradient(0deg, transparent 0 35px, rgba(233,161,59,.05) 35px 36px),
-    radial-gradient(900px 520px at 50% -20%, #17573F 0%, #0F3D2E 52%, #071E17 100%);
-  color: #EAF0E9;
+    repeating-linear-gradient(0deg, transparent 0 35px, rgba(255,255,255,.045) 35px 36px),
+    radial-gradient(900px 520px at 50% -20%, #26346B 0%, #1B2A52 52%, #141F3E 100%);
+  color: #E8EDFB;
   text-align: center;
   padding: 96px 0;
 }
 .local-claim {
   font-family: var(--font-mono); font-size: clamp(13px, 1.6vw, 16px);
   font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--marigold); margin-bottom: 18px;
+  color: var(--sun); margin-bottom: 18px;
 }
-.local-section h2 { font-size: clamp(28px, 3.6vw, 44px); color: #F7F3E6; max-width: 18ch; margin: 0 auto 18px; }
-.local-sub { max-width: 56ch; margin: 0 auto 34px; color: #B9CCC0; font-size: 15.5px; }
+.local-section h2 { font-size: clamp(28px, 3.6vw, 44px); color: #F0F3FE; max-width: 18ch; margin: 0 auto 18px; }
+.local-sub { max-width: 56ch; margin: 0 auto 34px; color: #B9C4E8; font-size: 15.5px; }
+.local-section .btn-hero { background: var(--sun); color: var(--counter); box-shadow: 0 10px 28px -10px rgba(255,201,77,.45); }
+.local-section .btn-hero:hover { background: #FFD666; }
 
 /* ============================================================
    FOOTER

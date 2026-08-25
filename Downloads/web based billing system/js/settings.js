@@ -98,7 +98,7 @@ Pages.settings = {
 
     /* ---------- backup / restore ---------- */
     $("#backup-btn").addEventListener("click", () => {
-      downloadFile(`ledgerdesk-backup-${todayISO()}.json`, DB.exportJSON(), "application/json");
+      downloadFile(`billbook-backup-${todayISO()}.json`, DB.exportJSON(), "application/json");
       toast("Backup downloaded.");
     });
 

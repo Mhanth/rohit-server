@@ -1,4 +1,4 @@
-# LedgerDesk — Web-Based Billing System
+# BillBook — Web-Based Billing System
 
 A complete billing / POS system for shops and service businesses, built with **pure HTML, CSS and JavaScript** — no frameworks, no build step, no server required. All data is stored safely in your browser's `localStorage`.
 
@@ -48,11 +48,10 @@ Everything lives in the browser under the key `ledgerdesk_db_v1`. Use **Settings
 ├── index.html          public landing page (self-writing invoice hero)
 ├── app.html            app shell + login
 ├── css/
-│   ├── style.css       app design system (ledger-green theme, print styles)
+│   ├── style.css       app design system (pastel navy-royal theme, print styles)
 │   └── landing.css     landing page styles
 └── js/
     ├── landing.js      hero count-up + scroll reveals
-    ├── utils.js        helpers: money/date formatting, modals, toasts, CSV, number-to-words
     ├── utils.js        helpers: money/date formatting, modals, toasts, CSV, number-to-words
     ├── db.js           localStorage layer, GST totals engine, seed demo data
     ├── dashboard.js    overview page
